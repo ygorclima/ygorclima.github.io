@@ -222,19 +222,26 @@
 	$(document).ready(function(){
 		if(localStorage.getItem('usuario')=="maria.amelia"){
 			$("#loginProf").text(localStorage.getItem('usuario'));
+            $("#loginDesenv").text("Sair");
 			$("#txt_menu").text(localStorage.getItem('usuario'));
-			$("#loginProf").attr("href","trilha.html");
-
-			$("#loginProf").attr("href","trilha.html");
-			alert("passei")
+            
+			$("#loginProf").attr("href","painelProfessor.html");
+			$("#loginDesenv").click(function(){
+                localStorage.clear();
+                window.open("https://ygorclima.github.io/");
+            });
 		}
 
 		if(localStorage.getItem('usuario')=="ana.grassi"){
 			$("#loginDesenv").text(localStorage.getItem('usuario'));
 			$("#loginProf").text("Sair");
 			$("#txt_menu").text(localStorage.getItem('usuario'));
-			$("#loginDesenv").attr("href","trilha.html");
-			alert("passei")
+			$("#loginDesenv").attr("href","painelDesenvolvedor.html");
+            
+            $("#loginProf").click(function(){
+                localStorage.clear();
+                window.open("https://ygorclima.github.io/");
+            });
 		}
 	})
 

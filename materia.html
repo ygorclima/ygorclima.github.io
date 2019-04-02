@@ -17,11 +17,11 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-								<!-- Header -->
+				<!-- Header -->
 					<header id="header" class="alt">
 						<a href="index.html" class="logo"><strong>LEARNING</strong> <span>Play</span></a>
 						<nav>
-							<a href="#menu">Menu</a>
+							<a href="#menu" id="txt_menu">Menu</a>
 						</nav>
 					</header>
 
@@ -33,11 +33,12 @@
 							<li><a href="trilha.html">Trilhas</a></li>
 						</ul>
 						<ul class="actions stacked">
-							<li><a href="loginProf.html" class="button fit">Log in Professor</a></li>
-                            <li><a href="login.html" class="button fit">Log in Desenvolvedor</a></li>
+							<li><a href="loginProf.html" id="loginProf" class="button fit">Log in Professor</a></li>
+                            <li><a href="login.html" id="loginDesenv"  class="button fit">Log in Desenvolvedor</a></li>
                             <li><a href="#" class="button primary fit">Jogar</a></li>
 						</ul>
 					</nav>
+
 
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
@@ -196,4 +197,35 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+	<script>
+            $(document).ready(function(){
+                if(localStorage.getItem('usuario')=="maria.amelia"){
+                    $("#loginProf").text(localStorage.getItem('usuario'));
+                    $("#loginDesenv").text("Sair");
+                    $("#txt_menu").text(localStorage.getItem('usuario'));
+
+                    $("#loginProf").attr("href","painelProfessor.html");
+                    $("#loginDesenv").click(function(){
+                        localStorage.clear();
+                        window.open("https://ygorclima.github.io/");
+                    });
+                   
+                }
+
+                if(localStorage.getItem('usuario')=="ana.grassi"){
+                    $("#loginDesenv").text(localStorage.getItem('usuario'));
+                    $("#loginProf").text("Sair");
+                    $("#txt_menu").text(localStorage.getItem('usuario'));
+                    $("#loginDesenv").attr("href","painelDesenvolvedor.html");
+
+                    $("#loginProf").click(function(){
+                        localStorage.clear();
+                        window.open("https://ygorclima.github.io/");
+                    });
+                   
+                }
+            })
+
+
+	</script>
 </html>

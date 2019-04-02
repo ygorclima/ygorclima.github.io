@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Painel Desenvolvedor</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+			<!-- Header -->
+					<header id="header" class="alt">
+						<a href="index.html" class="logo"><strong>LEARNING</strong> <span>Play</span></a>
+						<nav>
+							<a href="#menu" id="txt_menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="materia.html">Matérias</a></li>
+							<li><a href="trilha.html">Trilhas</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="loginProf.html" id="loginProf" class="button fit">Log in Professor</a></li>
+                            <li><a href="login.html" id="loginDesenv"  class="button fit">Log in Desenvolvedor</a></li>
+                            <li><a href="#" class="button primary fit">Jogar</a></li>
+						</ul>
+					</nav>
+
+
+				<!-- Main -->
+					<div id="main">
+                        </br></br></br>
+                           <section id="two" class="spotlights">
+								<section style="background-color: #d7daea" width="50%">
+									<canvas id="myChart" style="max-width: 500px;"></canvas>
+                                    <canvas id="radarChart"></canvas>
+                                </section></br></br></br>
+
+                               
+                            </section>
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">#</th>
+                                          <th scope="col">Nome do Jogo</th>
+                                          <th scope="col">Matéria</th>
+                                          <th scope="col">Preço Acordado</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <th scope="row">1</th>
+                                          <td>Math Fight</td>
+                                          <td>Matemática</td>
+                                          <td>R$ 12.00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">2</th>
+                                          <td>LogicPoint</td>
+                                          <td>Lógica</td>
+                                          <td>R$ 17.00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">3</th>
+                                          <td>LAB-BIO</td>
+                                          <td>Biologia</td>
+                                          <td>R$ 9.00</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>								
+							</section>
+
+						<!-- Three -->
+
+					</div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; LEARNING Play</li><li>Design: <a href="https://www.mackenzie.br/">GAMY</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+            <script type="text/javascript" src="jscript/graph.js"></script>
+            
+            
+
+	</body>
+    <script>
+        	$(document).ready(function(){
+                    if(localStorage.getItem('usuario')=="maria.amelia"){
+                        $("#loginProf").text(localStorage.getItem('usuario'));
+                        $("#loginDesenv").text("Sair");
+                        $("#txt_menu").text(localStorage.getItem('usuario'));
+
+                        $("#loginProf").attr("href","painelProfessor.html");
+                        $("#loginDesenv").click(function(){
+                            localStorage.clear();
+                            window.open("https://ygorclima.github.io/");
+                        });
+                       
+                    }
+
+                    if(localStorage.getItem('usuario')=="ana.grassi"){
+                        $("#loginDesenv").text(localStorage.getItem('usuario'));
+                        $("#loginProf").text("Sair");
+                        $("#txt_menu").text(localStorage.getItem('usuario'));
+                        $("#loginDesenv").attr("href","trilha.html");
+
+                        $("#loginProf").click(function(){
+                            localStorage.clear();
+                            window.open("https://ygorclima.github.io/");
+                        });
+                     
+                    }
+        
+        
+                      var ctx = document.getElementById("myChart").getContext('2d');
+                      var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                          labels: ["Math Fight", "Logic Point", "Lab-bio", "GiraFisica", "Matematicando", "Aritimando"],
+                          datasets: [{
+                            label: 'Vendas',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                              'rgba(255,99,132,1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            yAxes: [{
+                              ticks: {
+                                beginAtZero: true
+                              }
+                            }]
+                          }
+                        }
+                      });
+
+
+                     //radar
+                      var ctxR = document.getElementById("radarChart").getContext('2d');
+                      var myRadarChart = new Chart(ctxR, {
+                        type: 'radar',
+                        data: {
+                          labels: ["Math Fight", "Logic Point", "Lab-bio", "GiraFisica", "Matematicando", "Aritimando"],
+                          datasets: [{
+                              label: "Proposta",
+                              data: [65, 59, 90, 81, 56, 55],
+                              backgroundColor: [
+                                'rgba(105, 0, 132, .2)',
+                              ],
+                              borderColor: [
+                                'rgba(200, 99, 132, .7)',
+                              ],
+                              borderWidth: 2
+                            },
+                            {
+                              label: "Aderência",
+                              data: [28, 48, 40, 19, 96, 27, 100],
+                              backgroundColor: [
+                                'rgba(0, 250, 220, .2)',
+                              ],
+                              borderColor: [
+                                'rgba(0, 213, 132, .7)',
+                              ],
+                              borderWidth: 2
+                            }
+                          ]
+                        },
+                        options: {
+                          responsive: false
+                        }
+                      });
+                  })
+    </script>
+</html>
